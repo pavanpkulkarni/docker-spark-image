@@ -18,11 +18,13 @@ RUN apt-get install software-properties-common -y \
 &&  apt-get install -y oracle-java8-installer \
     supervisor
 
+ENV SPARK_VERSION 2.2.1
+ENV HADOOP_VERSION 2.7
 
-#downloading & unpacking Spark 2.3.0
-RUN wget https://archive.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz \
-&&  tar -xzf spark-2.3.0-bin-hadoop2.7.tgz \
-&&  mv spark-2.3.0-bin-hadoop2.7 /opt/spark
+#download and extract Spark 
+RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION.tgz \
+&&  tar -xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION.tgz \
+&&  mv spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION /opt/spark
 
 
 # adding conf files to all images. This will be used in supervisord for running spark master/slave
@@ -31,7 +33,7 @@ COPY slave.conf /opt/conf/slave.conf
 
 
 # expose port 8080 for spark UI
-EXPOSE 8080
+EXPOSE 4040 6066 7077 8080
 
 #default command: this is just an option 
 CMD ["/opt/spark/bin/spark-shell", "--master", "local[*]"]
