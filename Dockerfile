@@ -19,10 +19,10 @@ RUN apt-get install software-properties-common -y \
     supervisor
 
 
-#downloading & unpacking Spark 2.1.0
-RUN wget https://archive.apache.org/dist/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz \
-&&  tar -xzf spark-2.1.0-bin-hadoop2.7.tgz \
-&&  mv spark-2.1.0-bin-hadoop2.7 /opt/spark
+#downloading & unpacking Spark 2.2.1
+RUN wget https://archive.apache.org/dist/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz \
+&&  tar -xzf spark-2.2.1-bin-hadoop2.7.tgz \
+&&  mv spark-2.2.1-bin-hadoop2.7 /opt/spark
 
 
 # adding conf files to all images. This will be used in supervisord for running spark master/slave
