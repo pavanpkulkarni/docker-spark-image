@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 
 
-MAINTAINER pavan.git@gmail.com
+LABEL authors="pavanpkulkarni@pavanpkulkarni.com"
 
 RUN apt-get update
 
