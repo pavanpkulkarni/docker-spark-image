@@ -33,7 +33,7 @@ COPY slave.conf /opt/conf/slave.conf
 
 
 # expose port 8080 for spark UI
-EXPOSE 4040 6066 7077 8080
+EXPOSE 4040 6066 7077 8080 18080 8081
 
 #default command: this is just an option 
 CMD ["/opt/spark/bin/spark-shell", "--master", "local[*]"]
